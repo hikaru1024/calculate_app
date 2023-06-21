@@ -1,0 +1,17 @@
+
+/* タイトル */
+.members_new{
+  .title{
+    display: flex;
+    justify-content: center;
+    margin-right: 120px;
+    font-size: 7px;
+    margin-top: 50px;
+  }
+
+  /* フォーム全体 */
+  .container{
+    display: flex;
+    justify-content: center;
+  }
+}
