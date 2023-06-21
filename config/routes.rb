@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'events/new'
-  root 'pages#index'
-
-
-  
+  root 'events#new'
+  post 'events/create'
+  get '/:evet_code', to: 'events#index'
 end

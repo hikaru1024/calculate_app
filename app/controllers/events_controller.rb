@@ -1,24 +1,23 @@
 class EventsController < ApplicationController
   
-
+  def index
+    @event = Event.find_by!(code: params['event_code'])
+  end
   
   def new
     
   end
 
-  def cretate
-    @event = Event.create(event_params)
-    
-    if @event.save
-      redirect_to :action => "new"
-    else
-      render plain: "エラー"
-    end
+  def create
+    event = Event.create(
+      name: params[:name],
+      code: '123456789qwe'
+    )
+
+    redirect_to "/123456789qwe"
   end
 
   private
-  def event_params
-    params.require(:event).permit(:name)
-  end
+
 
 end
