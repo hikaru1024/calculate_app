@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'events/new'
   root 'pages#index'
   resources :members
+  get "members/:id" => "members#show"
 end
