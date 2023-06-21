@@ -10,14 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_15_032657) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_21_062031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "name", null: false, comment: "名前"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_members_on_event_id"
   end
 
+  create_table "payment_details", force: :cascade do |t|
+    t.bigint "payment_id", null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_payment_details_on_member_id"
+    t.index ["payment_id"], name: "index_payment_details_on_payment_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "title"
+    t.bigint "event_id", null: false
+    t.bigint "member_id", null: false
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_payments_on_event_id"
+    t.index ["member_id"], name: "index_payments_on_member_id"
+  end
+
+  add_foreign_key "members", "events"
+  add_foreign_key "payment_details", "members"
+  add_foreign_key "payment_details", "payments"
+  add_foreign_key "payments", "events"
+  add_foreign_key "payments", "members"
 end
