@@ -1,0 +1,7 @@
+<h1>メンバーの追加</h1>
+<%= form_with(model: @members, local:true) do |f| %>
+    <div><%= f.label :名前 %></div>
+    <div><%= f.text_field :名前 %></div>
+    <div><%= f.submit :追加%></div>
+<% end %>
+<%= link_to '戻る',members_path %>
