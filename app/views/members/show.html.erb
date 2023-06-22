@@ -1,1 +1,14 @@
-<%= @member.name %>
+<div class = "members_show">
+  <div class= "title">
+    <h1><%= @member.name %>の支払い</h1>
+  </div>
+
+  <div class="container">
+  <% @payment_details.each do |payment_detail| %>
+  <%= payment_detail.payment.title %>
+  <%= payment_detail.payment.cost/@payment_details_cnt[payment_detail.payment_id] %>円
+  <br>
+  <% end %>
+  <%= link_to("戻る", "/members/new") %>
+</div>
+
