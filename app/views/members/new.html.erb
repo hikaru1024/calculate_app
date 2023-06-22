@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>メンバーの追加</h1>
 <%= form_with(model: @members, local:true) do |f| %>
     <div><%= f.label :名前 %></div>
@@ -5,3 +6,25 @@
     <div><%= f.submit :追加%></div>
 <% end %>
 <%= link_to '戻る',members_path %>
+=======
+<div class = "members_new">
+  <div class= "title">
+    <h1>メンバー追加</h1>
+  </div>
+
+  <div class="container">
+    <%= form_with url: '/member',  method: :post do |f| %>
+      <div class="label_name">
+        <%= f.label :名前 %><br />
+      </div>
+      <div class="container_form">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+      <div class="actions_button"><br />
+        <%= f.submit "追加" ,class: "button red" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+>>>>>>> origin/main

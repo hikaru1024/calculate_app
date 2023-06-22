@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+<<<<<<< HEAD
     def index
     end
     def show
@@ -14,3 +15,6 @@ class MembersController < ApplicationController
         params.require(:member).permit(:name)
      end
 end
+=======
+end
+>>>>>>> origin/main
