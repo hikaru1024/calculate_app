@@ -1,6 +1,3 @@
-require 'securerandom'
-require 'base64'
-
 class EventsController < ApplicationController
   
   def index
@@ -14,25 +11,13 @@ class EventsController < ApplicationController
   def create
     event = Event.create(
       name: params[:name],
-      code: generate_random_code
+      code: '123456789qwe'
     )
 
-    redirect_to "/#{event.code}"
-    
+    redirect_to "/123456789qwe"
   end
 
   private
-  def generate_random_code
-    code_length = 12  # コードの長さ（任意の値に変更可能）
-
-    # ランダムなバイト列を生成
-    random_bytes = SecureRandom.random_bytes(code_length)
-
-    # バイト列をBase64エンコード
-    base64_code = Base64.urlsafe_encode64(random_bytes, padding: false)[0, code_length]
-
-    base64_code
-  end
 
 
 end
